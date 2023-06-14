@@ -10,17 +10,17 @@ namespace SeleniumDemo
 
         {
             String email = "mentor@rahulshettyacademy.com";
-            String parentWindowId = driver.CurrentWindowHandle;
-            driver.FindElement(By.ClassName("blinkingText")).Click();
+            String parentWindowId = driver.Value.CurrentWindowHandle;
+            driver.Value.FindElement(By.ClassName("blinkingText")).Click();
 
-            Assert.AreEqual(2, driver.WindowHandles.Count);//1
+            Assert.AreEqual(2, driver.Value.WindowHandles.Count);//1
 
-            String childWindowName = driver.WindowHandles[1];
+            String childWindowName = driver.Value.WindowHandles[1];
 
-            driver.SwitchTo().Window(childWindowName);
+            driver.Value.SwitchTo().Window(childWindowName);
 
-            TestContext.Progress.WriteLine(driver.FindElement(By.CssSelector(".red")).Text);
-            String text = driver.FindElement(By.CssSelector(".red")).Text;
+            TestContext.Progress.WriteLine(driver.Value.FindElement(By.CssSelector(".red")).Text);
+            String text = driver.Value.FindElement(By.CssSelector(".red")).Text;
 
             // Please email us at mentor @rahulshettyacademy.com with below template to receive response
 
@@ -30,9 +30,9 @@ namespace SeleniumDemo
 
             Assert.AreEqual(email, trimmedString[0]);
 
-            driver.SwitchTo().Window(parentWindowId);
+            driver.Value.SwitchTo().Window(parentWindowId);
 
-            driver.FindElement(By.Id("username")).SendKeys(trimmedString[0]);
+            driver.Value.FindElement(By.Id("username")).SendKeys(trimmedString[0]);
 
         }
     }
